@@ -1,6 +1,6 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
-import com.redhat.quarkus.cafe.domain.Item;
+import io.quarkuscoffeeshop.domain.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

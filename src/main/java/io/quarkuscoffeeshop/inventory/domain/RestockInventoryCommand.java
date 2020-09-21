@@ -1,6 +1,6 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
-import com.redhat.quarkus.cafe.domain.Item;
+import io.quarkuscoffeeshop.domain.Item;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
