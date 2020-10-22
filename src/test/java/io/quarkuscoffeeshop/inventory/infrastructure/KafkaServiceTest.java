@@ -38,11 +38,6 @@ public class KafkaServiceTest extends KafkaIT {
     @Test
     public void testRestockRequest() {
 
-/*
-        OrderInEvent orderIn = new OrderInEvent(EventType.BEVERAGE_ORDER_IN, UUID.randomUUID().toString(), UUID.randomUUID().toString(), "Lemmy", Item.COFFEE_BLACK);
-        producerMap.get("barista-in").send(new ProducerRecord<>("barista-in", jsonb.toJson(orderIn)));
-
- */
         RestockInventoryCommand restockInventoryCommand = new RestockInventoryCommand(Item.COFFEE_BLACK);
         producerMap.get(KAKFA_TOPIC).send(new ProducerRecord<>(KAKFA_TOPIC, jsonb.toJson(restockInventoryCommand)));
 
@@ -65,8 +60,6 @@ public class KafkaServiceTest extends KafkaIT {
         for (ConsumerRecord<String, String> record : inventoryRecords) {
             logger.info(record.value());
             RestockItemCommand restockItemCommand = jsonb.fromJson(record.value(), RestockItemCommand.class);
-//            assertEquals(CommandType.RESTOCK_BARISTA_COMMAND, restockItemCommand.commandType);
-//            assertEquals(Item.COFFEE_BLACK, restockItemCommand.getItem());
             if (CommandType.RESTOCK_BARISTA_COMMAND.equals(restockItemCommand.commandType)) {
                 numberOfRestockBaristaCommands++;
             }
