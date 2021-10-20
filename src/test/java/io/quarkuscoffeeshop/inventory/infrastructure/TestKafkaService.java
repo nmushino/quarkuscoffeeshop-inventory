@@ -2,7 +2,6 @@ package io.quarkuscoffeeshop.inventory.infrastructure;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.junit.mockito.InjectMock;
 import io.quarkus.test.junit.mockito.InjectSpy;
 import io.quarkuscoffeeshop.inventory.domain.Item;
 import io.quarkuscoffeeshop.inventory.domain.RestockInventoryCommand;
@@ -12,7 +11,6 @@ import io.smallrye.reactive.messaging.connectors.InMemoryConnector;
 import io.smallrye.reactive.messaging.connectors.InMemorySource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,8 +52,8 @@ public class TestKafkaService {
     @Test
     public void testIncoming() {
 
-        RestockInventoryCommand restockInventoryCommand = new RestockInventoryCommand(Item.COFFEE_BLACK);
-        InMemorySource<RestockInventoryCommand> ordersIn = connector.source(KAKFA_TOPIC);
+        RestockItemCommand restockInventoryCommand = new RestockItemCommand(Item.COFFEE_BLACK);
+        InMemorySource<RestockItemCommand> ordersIn = connector.source(KAKFA_TOPIC);
         ordersIn.send(restockInventoryCommand);
         await().atLeast(2, TimeUnit.SECONDS);
         verify(stockRoom, times(1)).handleRestockItemCommand(Item.COFFEE_BLACK);

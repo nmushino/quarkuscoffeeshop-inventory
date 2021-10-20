@@ -2,12 +2,8 @@ package io.quarkuscoffeeshop.inventory.domain;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
-import java.util.StringJoiner;
-
 @RegisterForReflection
-public class RestockInventoryCommand extends RestockItemCommand implements CoffeeshopCommand{
-
-    public final CommandType commandType = CommandType.RESTOCK_INVENTORY_COMMAND;
+public class RestockInventoryCommand implements CoffeeshopCommand{
 
     Item item;
 
@@ -29,11 +25,10 @@ public class RestockInventoryCommand extends RestockItemCommand implements Coffe
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", RestockInventoryCommand.class.getSimpleName() + "[", "]")
-                .add("commandType=" + commandType)
-                .add("item=" + item)
-                .add("quantity=" + quantity)
-                .toString();
+        return "RestockInventoryCommand{" +
+                "item=" + item +
+                ", quantity=" + quantity +
+                '}';
     }
 
     @Override
@@ -45,21 +40,15 @@ public class RestockInventoryCommand extends RestockItemCommand implements Coffe
         RestockInventoryCommand that = (RestockInventoryCommand) o;
 
         if (quantity != that.quantity) return false;
-        if (commandType != that.commandType) return false;
         return item == that.item;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (commandType != null ? commandType.hashCode() : 0);
         result = 31 * result + (item != null ? item.hashCode() : 0);
         result = 31 * result + quantity;
         return result;
-    }
-
-    public CommandType getCommandType() {
-        return commandType;
     }
 
     public Item getItem() {

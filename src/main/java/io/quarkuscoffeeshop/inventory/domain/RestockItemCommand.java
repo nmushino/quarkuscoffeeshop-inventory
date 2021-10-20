@@ -11,8 +11,6 @@ public class RestockItemCommand implements CoffeeshopCommand{
 
     int quantity;
 
-    public CommandType commandType;
-
     /**
      * Default empty constructor
      */
@@ -39,19 +37,12 @@ public class RestockItemCommand implements CoffeeshopCommand{
         this.quantity = quantity;
     }
 
-    public RestockItemCommand(Item item, int quantity, CommandType commandType) {
-        this.item = item;
-        this.quantity = quantity;
-        this.commandType = commandType;
-    }
-
     @Override
     public String toString() {
-        return new StringJoiner(", ", RestockItemCommand.class.getSimpleName() + "[", "]")
-                .add("item=" + item)
-                .add("quantity=" + quantity)
-                .add("commandType=" + commandType)
-                .toString();
+        return "RestockItemCommand{" +
+                "item=" + item +
+                ", quantity=" + quantity +
+                '}';
     }
 
     @Override
@@ -62,15 +53,13 @@ public class RestockItemCommand implements CoffeeshopCommand{
         RestockItemCommand that = (RestockItemCommand) o;
 
         if (quantity != that.quantity) return false;
-        if (item != that.item) return false;
-        return commandType == that.commandType;
+        return item == that.item;
     }
 
     @Override
     public int hashCode() {
         int result = item != null ? item.hashCode() : 0;
         result = 31 * result + quantity;
-        result = 31 * result + (commandType != null ? commandType.hashCode() : 0);
         return result;
     }
 
