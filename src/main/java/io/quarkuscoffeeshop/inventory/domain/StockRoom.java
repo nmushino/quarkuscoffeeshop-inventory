@@ -1,6 +1,5 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
-import io.quarkuscoffeeshop.domain.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +11,7 @@ public class StockRoom {
 
     static final Logger logger = LoggerFactory.getLogger(StockRoom.class);
 
-    public CompletableFuture<CoffeeshopCommand> handleRestockItemCommand(final Item item) {
+    public CompletableFuture<RestockItemCommand> handleRestockItemCommand(final Item item) {
 
         logger.debug("restocking: {}", item);
 
@@ -44,14 +43,14 @@ public class StockRoom {
         }
     }
 
-    private CoffeeshopCommand restockBarista(Item item, int seconds) {
+    private RestockItemCommand restockBarista(Item item, int seconds) {
         sleep(seconds);
-        return new RestockBaristaCommand(item, 99);
+        return new RestockItemCommand(item, 99);
     }
 
-    private CoffeeshopCommand restockKitchen(Item item, int seconds) {
+    private RestockItemCommand restockKitchen(Item item, int seconds) {
         sleep(seconds);
-        return new RestockKitchenCommand(item, 99);
+        return new RestockItemCommand(item, 99);
     }
 
 }

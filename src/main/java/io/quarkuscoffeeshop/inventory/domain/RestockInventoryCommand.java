@@ -1,9 +1,6 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
-import io.quarkuscoffeeshop.domain.Item;
 import io.quarkus.runtime.annotations.RegisterForReflection;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.StringJoiner;
 
@@ -42,25 +39,23 @@ public class RestockInventoryCommand extends RestockItemCommand implements Coffe
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         RestockInventoryCommand that = (RestockInventoryCommand) o;
 
-        return new EqualsBuilder()
-                .append(quantity, that.quantity)
-                .append(commandType, that.commandType)
-                .append(item, that.item)
-                .isEquals();
+        if (quantity != that.quantity) return false;
+        if (commandType != that.commandType) return false;
+        return item == that.item;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(commandType)
-                .append(item)
-                .append(quantity)
-                .toHashCode();
+        int result = super.hashCode();
+        result = 31 * result + (commandType != null ? commandType.hashCode() : 0);
+        result = 31 * result + (item != null ? item.hashCode() : 0);
+        result = 31 * result + quantity;
+        return result;
     }
 
     public CommandType getCommandType() {
