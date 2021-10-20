@@ -4,7 +4,6 @@ import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectSpy;
 import io.quarkuscoffeeshop.inventory.domain.Item;
-import io.quarkuscoffeeshop.inventory.domain.RestockInventoryCommand;
 import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
 import io.quarkuscoffeeshop.inventory.domain.StockRoom;
 import io.smallrye.reactive.messaging.connectors.InMemoryConnector;

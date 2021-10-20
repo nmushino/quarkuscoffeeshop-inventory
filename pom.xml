@@ -6,8 +6,10 @@
   <artifactId>quarkuscoffeeshop-inventory</artifactId>
   <version>5.0.0-SNAPSHOT</version>
   <properties>
-    <!-- generated -->
+    <awaitility.version>4.0.2</awaitility.version>
+    <coffeeshop-testutils.version>4.0.0</coffeeshop-testutils.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
+    <failsafe-plugin.version>3.0.0-M4</failsafe-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
@@ -18,11 +20,6 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>2.3.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-    <!-- added -->
-    <awaitility.version>4.0.2</awaitility.version>
-    <failsafe-plugin.version>3.0.0-M4</failsafe-plugin.version>
-    <!-- project versions -->
-    <coffeeshop-testutils.version>4.0.0</coffeeshop-testutils.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -33,11 +30,9 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!-- Testing -->
     </dependencies>
   </dependencyManagement>
   <dependencies>
-    <!-- Quarkus stuff -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-core</artifactId>
@@ -50,7 +45,14 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
     </dependency>
-    <!-- Application Testing -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
@@ -115,7 +117,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${compiler-plugin.version}</version>
         <configuration>
