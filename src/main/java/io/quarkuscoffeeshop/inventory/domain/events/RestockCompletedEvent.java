@@ -1,4 +1,4 @@
 package io.quarkuscoffeeshop.inventory.domain.events;
 
-public class RestockCompletedEvent {
+public class RestockCompletedEvent implements RestockEvent{
 }

@@ -3,10 +3,11 @@ package io.quarkuscoffeeshop.inventory.domain;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
-@Entity
+@Entity @NamedQuery(name="Inventory.findByItem", query="from Inventory where productMaster.item = ?1")
 public class Inventory extends PanacheEntity {
 
     @OneToOne

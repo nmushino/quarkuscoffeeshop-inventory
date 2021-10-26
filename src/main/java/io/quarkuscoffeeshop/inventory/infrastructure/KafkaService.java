@@ -25,10 +25,6 @@ public class KafkaService {
     @Inject
     StockRoom stockRoom;
 
-    @Inject
-    @Channel("inventory-out")
-    Emitter<RestockItemCommand> inventoryEmitter;
-
     @Incoming("inventory-in")
     @Blocking
     @Transactional
@@ -36,7 +32,8 @@ public class KafkaService {
         logger.debug("\nRestockItemCommand Received: {}", restockItemCommand);
             stockRoom.handleRestockItemCommand(restockItemCommand.getItem())
                     .thenApply(c -> {
-                        return inventoryEmitter.send(c);
+                        return null;
+//                        return inventoryEmitter.send(c);
                     });
     }
 }

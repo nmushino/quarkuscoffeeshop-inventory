@@ -1,0 +1,61 @@
+package io.quarkuscoffeeshop.inventory.domain;
+
+import io.quarkuscoffeeshop.inventory.domain.events.RestockEvent;
+
+import java.util.List;
+
+public class RestockItemResult {
+
+    List<RestockInventoryCommand> restockInventoryCommands;
+
+    List<RestockEvent> restockEvents;
+
+    public RestockItemResult(List<RestockInventoryCommand> restockInventoryCommandList, List<RestockEvent> restockEventList) {
+        this.restockInventoryCommands = restockInventoryCommandList;
+        this.restockEvents = restockEventList;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("RestockItemResult{");
+        sb.append("restockInventoryCommands=").append(restockInventoryCommands);
+        sb.append(", restockEvents=").append(restockEvents);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RestockItemResult that = (RestockItemResult) o;
+
+        if (restockInventoryCommands != null ? !restockInventoryCommands.equals(that.restockInventoryCommands) : that.restockInventoryCommands != null)
+            return false;
+        return restockEvents != null ? restockEvents.equals(that.restockEvents) : that.restockEvents == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = restockInventoryCommands != null ? restockInventoryCommands.hashCode() : 0;
+        result = 31 * result + (restockEvents != null ? restockEvents.hashCode() : 0);
+        return result;
+    }
+
+    public List<RestockInventoryCommand> getRestockInventoryCommands() {
+        return restockInventoryCommands;
+    }
+
+    public void setRestockInventoryCommands(List<RestockInventoryCommand> restockInventoryCommands) {
+        this.restockInventoryCommands = restockInventoryCommands;
+    }
+
+    public List<RestockEvent> getRestockEvents() {
+        return restockEvents;
+    }
+
+    public void setRestockEvents(List<RestockEvent> restockEvents) {
+        this.restockEvents = restockEvents;
+    }
+}
