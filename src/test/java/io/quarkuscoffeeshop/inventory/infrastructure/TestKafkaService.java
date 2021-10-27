@@ -15,8 +15,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -28,8 +26,6 @@ import static org.mockito.Mockito.*;
 public class TestKafkaService {
 
     static final Logger logger = LoggerFactory.getLogger(TestKafkaService.class);
-
-    Jsonb jsonb = JsonbBuilder.create();
 
     String KAKFA_TOPIC = "inventory-in";
 
