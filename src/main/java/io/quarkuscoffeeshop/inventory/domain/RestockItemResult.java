@@ -1,16 +1,18 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
+import io.debezium.outbox.quarkus.ExportedEvent;
 import io.quarkuscoffeeshop.inventory.domain.events.RestockEvent;
 
+import javax.enterprise.event.Event;
 import java.util.List;
 
 public class RestockItemResult {
 
     List<RestockInventoryCommand> restockInventoryCommands;
 
-    List<RestockEvent> restockEvents;
+    List<ExportedEvent> restockEvents;
 
-    public RestockItemResult(List<RestockInventoryCommand> restockInventoryCommandList, List<RestockEvent> restockEventList) {
+    public RestockItemResult(List<RestockInventoryCommand> restockInventoryCommandList, List<ExportedEvent> restockEventList) {
         this.restockInventoryCommands = restockInventoryCommandList;
         this.restockEvents = restockEventList;
     }
@@ -51,11 +53,11 @@ public class RestockItemResult {
         this.restockInventoryCommands = restockInventoryCommands;
     }
 
-    public List<RestockEvent> getRestockEvents() {
+    public List<ExportedEvent> getRestockEvents() {
         return restockEvents;
     }
 
-    public void setRestockEvents(List<RestockEvent> restockEvents) {
+    public void setRestockEvents(List<ExportedEvent> restockEvents) {
         this.restockEvents = restockEvents;
     }
 }

@@ -17,17 +17,15 @@ public class KafkaService {
     Logger logger = LoggerFactory.getLogger(KafkaService.class);
 
     @Inject
-    StockRoom stockRoom;
+    InventoryService inventoryService;
 
     @Incoming("inventory-in")
     @Blocking
     @Transactional
     public void processRestockCommand(final RestockItemCommand restockItemCommand) {
         logger.debug("\nRestockItemCommand Received: {}", restockItemCommand);
-            stockRoom.handleRestockItemCommand(restockItemCommand.getItem())
-                    .thenApply(c -> {
-                        return null;
-//                        return inventoryEmitter.send(c);
-                    });
+        inventoryService.restockItem(restockItemCommand);
     }
+
+
 }

@@ -1,11 +1,17 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
+import io.debezium.outbox.quarkus.ExportedEvent;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkuscoffeeshop.inventory.domain.events.RestockCompletedEvent;
+import io.quarkuscoffeeshop.inventory.domain.events.RestockEvent;
+import io.quarkuscoffeeshop.inventory.domain.events.RestockRequestedEvent;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity @NamedQuery(name="Inventory.findByItem", query="from Inventory where productMaster.item = ?1")
 public class Inventory extends PanacheEntity {
@@ -35,6 +41,50 @@ public class Inventory extends PanacheEntity {
 
     public int availableQuantity(){
         return inStockQuantity - reservedQuantity;
+    }
+
+    public RestockItemResult restock() {
+
+        RestockInventoryCommand restockInventoryCommand = new RestockInventoryCommand(this.productMaster.item, 99);
+
+        List<ExportedEvent> restockEventList = new ArrayList<ExportedEvent>();
+        restockEventList.add(RestockRequestedEvent.from(this));
+
+        // model the restocking time making the drink
+        int delay;
+        switch (this.productMaster.item) {
+            case COFFEE_BLACK:
+                delay = 50;
+                break;
+            case COFFEE_WITH_ROOM:
+                delay = 50;
+                break;
+            case ESPRESSO:
+                delay = 70;
+                break;
+            case ESPRESSO_DOUBLE:
+                delay = 70;
+                break;
+            case CAPPUCCINO:
+                delay = 100;
+                break;
+            default:
+                delay = 300;
+                break;
+        };
+//        try {
+//            Thread.sleep(delay * 1000);
+//        } catch (InterruptedException e) {
+//            Thread.currentThread().interrupt();
+//        }
+
+        restockEventList.add(RestockCompletedEvent.from(this));
+
+        return new RestockItemResult(
+                new ArrayList<RestockInventoryCommand>(){{
+                    add(restockInventoryCommand);
+                }},
+                restockEventList);
     }
 
     public Inventory() {

@@ -11,6 +11,7 @@ public class ProductMaster extends PanacheEntityBase {
     @Id @Column(unique = true, name="sku_id")
     UUID skuId;
 
+    @Enumerated(EnumType.STRING)
     Item item;
 
     public ProductMaster() {
