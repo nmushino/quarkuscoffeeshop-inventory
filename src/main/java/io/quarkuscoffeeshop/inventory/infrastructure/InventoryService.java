@@ -28,7 +28,7 @@ public class InventoryService {
 
     @Inject
     @Channel("inventory-out")
-    Emitter<RestockInventoryCommand> inventoryEmitter;
+    Emitter<String> inventoryEmitter;
 
     public void restockItem(final RestockItemCommand restockItemCommand) {
         LOGGER.debug("restockItem: {}", restockItemCommand);
@@ -44,12 +44,11 @@ public class InventoryService {
             LOGGER.debug("fired: {}", exportedEvent);
         });
 
-/*
         restockItemResult.getRestockInventoryCommands().forEach(command -> {
-            inventoryEmitter.send(command);
+            LOGGER.debug("sending: {}", command);
+            inventoryEmitter.send(command.toString());
             LOGGER.debug("sent: {}", command);
         });
-*/
 
         LOGGER.debug("restock completed");
     }

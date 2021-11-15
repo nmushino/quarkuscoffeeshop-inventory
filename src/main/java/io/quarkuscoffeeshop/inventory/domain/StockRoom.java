@@ -1,12 +1,13 @@
 package io.quarkuscoffeeshop.inventory.domain;
 
+import io.quarkus.arc.Unremovable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.concurrent.CompletableFuture;
 
-@ApplicationScoped
+@ApplicationScoped @Unremovable
 public class StockRoom {
 
     static final Logger logger = LoggerFactory.getLogger(StockRoom.class);

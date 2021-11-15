@@ -5,7 +5,6 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectSpy;
 import io.quarkuscoffeeshop.inventory.domain.Item;
 import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
-import io.quarkuscoffeeshop.inventory.domain.StockRoom;
 import io.smallrye.reactive.messaging.connectors.InMemoryConnector;
 import io.smallrye.reactive.messaging.connectors.InMemorySource;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +24,7 @@ import static org.mockito.Mockito.*;
 @QuarkusTest @QuarkusTestResource(KafkaTestResource.class)
 public class TestKafkaService {
 
-    static final Logger logger = LoggerFactory.getLogger(TestKafkaService.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(TestKafkaService.class);
 
     String KAKFA_TOPIC = "inventory-in";
 
@@ -33,15 +32,12 @@ public class TestKafkaService {
     @Any
     InMemoryConnector connector;
 
-    @Inject
-    KafkaService kafkaService;
-
     @InjectSpy
-    StockRoom stockRoom;
+    InventoryService inventoryService;
 
     @BeforeEach
     public void setUp() {
-        doAnswer(invocationOnMock -> new CompletableFuture<RestockItemCommand>()).when(stockRoom).handleRestockItemCommand(any(Item.class));
+        doAnswer(invocationOnMock -> new CompletableFuture<RestockItemCommand>()).when(inventoryService).restockItem(any(RestockItemCommand.class));
     }
 
     @Test
@@ -50,7 +46,9 @@ public class TestKafkaService {
         RestockItemCommand restockInventoryCommand = new RestockItemCommand(Item.COFFEE_BLACK);
         InMemorySource<RestockItemCommand> ordersIn = connector.source(KAKFA_TOPIC);
         ordersIn.send(restockInventoryCommand);
-        await().atLeast(2, TimeUnit.SECONDS);
-        verify(stockRoom, times(1)).handleRestockItemCommand(Item.COFFEE_BLACK);
+        LOGGER.info("sent to Kafka: {}", restockInventoryCommand);
+        await().atLeast(2, TimeUnit.SECONDS).then();
+        LOGGER.info("verifying");
+        verify(inventoryService, times(1)).restockItem(new RestockItemCommand(Item.COFFEE_BLACK));
     }
 }
