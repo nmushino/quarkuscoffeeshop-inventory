@@ -16,13 +16,13 @@ public class RestockCompletedEvent implements RestockEvent, ExportedEvent<UUID, 
     private static final String TYPE = "RESTOCK";
     private static final String EVENT_TYPE = "RESTOCK_COMPLETED_EVENT";
 
-    private final UUID aggregateId;
+    private final String aggregateId;
 
     private final JsonNode jsonNode;
 
     private final Instant timestamp;
 
-    public RestockCompletedEvent(UUID aggregateId, JsonNode jsonNode, Instant instant) {
+    public RestockCompletedEvent(String aggregateId, JsonNode jsonNode, Instant instant) {
         this.aggregateId = aggregateId;
         this.jsonNode = jsonNode;
         this.timestamp = instant;
@@ -42,7 +42,7 @@ public class RestockCompletedEvent implements RestockEvent, ExportedEvent<UUID, 
     }
 
     @Override
-    public UUID getAggregateId() {
+    public String getAggregateId() {
         return this.aggregateId;
     }
 
