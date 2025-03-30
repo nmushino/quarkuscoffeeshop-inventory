@@ -9,7 +9,7 @@ import io.quarkuscoffeeshop.inventory.domain.Inventory;
 import java.time.Instant;
 import java.util.UUID;
 
-public class RestockCompletedEvent implements RestockEvent, ExportedEvent<UUID, JsonNode> {
+public class RestockCompletedEvent implements RestockEvent, ExportedEvent<String, JsonNode> {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
@@ -36,7 +36,7 @@ public class RestockCompletedEvent implements RestockEvent, ExportedEvent<UUID, 
                 .put("item", inventory.getProductMaster().getItem().toString());
 
         return new RestockCompletedEvent(
-                inventory.getProductMaster().getSkuId(),
+                inventory.getProductMaster().getSkuId().toString(), // UUID → String に変換
                 asJson,
                 Instant.now());
     }
