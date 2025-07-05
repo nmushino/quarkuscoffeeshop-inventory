@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.quarkusdroneshop</groupId>
-  <artifactId>quarkuscoffeeshop-inventory</artifactId>
+  <artifactId>quarkusdroneshop-inventory</artifactId>
   <version>5.0.0-SNAPSHOT</version>
   <properties>
     <awaitility.version>4.0.2</awaitility.version>
-    <coffeeshop-testutils.version>4.0.0</coffeeshop-testutils.version>
+    <droneshop-testutils.version>4.0.0</droneshop-testutils.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <failsafe-plugin.version>3.0.0-M4</failsafe-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
