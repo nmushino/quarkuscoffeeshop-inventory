@@ -1,10 +1,10 @@
-package io.quarkuscoffeeshop.inventory.domain;
+package io.quarkusdroneshop.inventory.domain;
 
 import io.debezium.outbox.quarkus.ExportedEvent;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkuscoffeeshop.inventory.domain.events.RestockCompletedEvent;
-import io.quarkuscoffeeshop.inventory.domain.events.RestockEvent;
-import io.quarkuscoffeeshop.inventory.domain.events.RestockRequestedEvent;
+import io.quarkusdroneshop.inventory.domain.events.RestockCompletedEvent;
+import io.quarkusdroneshop.inventory.domain.events.RestockEvent;
+import io.quarkusdroneshop.inventory.domain.events.RestockRequestedEvent;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;

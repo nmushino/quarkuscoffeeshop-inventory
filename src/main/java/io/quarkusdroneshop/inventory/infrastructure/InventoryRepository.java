@@ -1,10 +1,10 @@
-package io.quarkuscoffeeshop.inventory.infrastructure;
+package io.quarkusdroneshop.inventory.infrastructure;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.runtime.StartupEvent;
-import io.quarkuscoffeeshop.inventory.domain.Inventory;
-import io.quarkuscoffeeshop.inventory.domain.Item;
-import io.quarkuscoffeeshop.inventory.domain.ProductMaster;
+import io.quarkusdroneshop.inventory.domain.Inventory;
+import io.quarkusdroneshop.inventory.domain.Item;
+import io.quarkusdroneshop.inventory.domain.ProductMaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

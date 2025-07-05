@@ -1,4 +1,4 @@
-package io.quarkuscoffeeshop.inventory.domain;
+package io.quarkusdroneshop.inventory.domain;
 
 public enum Item {
 

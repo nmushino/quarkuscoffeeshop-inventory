@@ -1,4 +1,4 @@
-package io.quarkuscoffeeshop.inventory.domain;
+package io.quarkusdroneshop.inventory.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 

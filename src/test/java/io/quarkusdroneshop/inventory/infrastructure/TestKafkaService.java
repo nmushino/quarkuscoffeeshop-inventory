@@ -1,10 +1,10 @@
-package io.quarkuscoffeeshop.inventory.infrastructure;
+package io.quarkusdroneshop.inventory.infrastructure;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectSpy;
-import io.quarkuscoffeeshop.inventory.domain.Item;
-import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
+import io.quarkusdroneshop.inventory.domain.Item;
+import io.quarkusdroneshop.inventory.domain.RestockItemCommand;
 import io.smallrye.reactive.messaging.connectors.InMemoryConnector;
 import io.smallrye.reactive.messaging.connectors.InMemorySource;
 import org.junit.jupiter.api.BeforeEach;

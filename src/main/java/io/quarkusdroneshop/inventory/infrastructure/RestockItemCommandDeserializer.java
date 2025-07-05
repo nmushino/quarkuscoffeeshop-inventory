@@ -1,7 +1,7 @@
-package io.quarkuscoffeeshop.inventory.infrastructure;
+package io.quarkusdroneshop.inventory.infrastructure;
 
 import io.quarkus.kafka.client.serialization.ObjectMapperDeserializer;
-import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
+import io.quarkusdroneshop.inventory.domain.RestockItemCommand;
 
 public class RestockItemCommandDeserializer extends ObjectMapperDeserializer<RestockItemCommand> {
 

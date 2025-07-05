@@ -1,7 +1,7 @@
-package io.quarkuscoffeeshop.inventory.domain;
+package io.quarkusdroneshop.inventory.domain;
 
 import io.debezium.outbox.quarkus.ExportedEvent;
-import io.quarkuscoffeeshop.inventory.domain.events.RestockEvent;
+import io.quarkusdroneshop.inventory.domain.events.RestockEvent;
 
 import javax.enterprise.event.Event;
 import java.util.List;

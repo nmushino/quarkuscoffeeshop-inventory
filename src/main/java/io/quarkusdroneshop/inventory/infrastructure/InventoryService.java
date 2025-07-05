@@ -1,10 +1,10 @@
-package io.quarkuscoffeeshop.inventory.infrastructure;
+package io.quarkusdroneshop.inventory.infrastructure;
 
 import io.debezium.outbox.quarkus.ExportedEvent;
-import io.quarkuscoffeeshop.inventory.domain.Inventory;
-import io.quarkuscoffeeshop.inventory.domain.RestockInventoryCommand;
-import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
-import io.quarkuscoffeeshop.inventory.domain.RestockItemResult;
+import io.quarkusdroneshop.inventory.domain.Inventory;
+import io.quarkusdroneshop.inventory.domain.RestockInventoryCommand;
+import io.quarkusdroneshop.inventory.domain.RestockItemCommand;
+import io.quarkusdroneshop.inventory.domain.RestockItemResult;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.slf4j.Logger;

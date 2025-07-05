@@ -1,6 +1,6 @@
-package io.quarkuscoffeeshop.inventory.domain.json;
+package io.quarkusdroneshop.inventory.domain.json;
 
-import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
+import io.quarkusdroneshop.inventory.domain.RestockItemCommand;
 import io.quarkus.kafka.client.serialization.JsonbDeserializer;
 
 /**

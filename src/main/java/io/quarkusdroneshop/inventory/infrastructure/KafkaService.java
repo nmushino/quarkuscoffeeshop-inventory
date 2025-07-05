@@ -1,6 +1,6 @@
-package io.quarkuscoffeeshop.inventory.infrastructure;
+package io.quarkusdroneshop.inventory.infrastructure;
 
-import io.quarkuscoffeeshop.inventory.domain.RestockItemCommand;
+import io.quarkusdroneshop.inventory.domain.RestockItemCommand;
 import io.smallrye.common.annotation.Blocking;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.slf4j.Logger;
