@@ -53,7 +53,7 @@ public class Inventory extends PanacheEntity {
         // model the restocking time making the drink
         int delay;
         switch (this.productMaster.item) {
-            case COFFEE_BLACK:
+            case QDC_A101:
                 delay = 50;
                 break;
             case COFFEE_WITH_ROOM:

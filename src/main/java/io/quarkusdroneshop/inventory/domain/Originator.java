@@ -2,5 +2,5 @@ package io.quarkusdroneshop.inventory.domain;
 
 public enum Originator {
 
-    BARISTA, INVENTORY, KITCHEN
+    QDCA10, INVENTORY, QDCA10Pro
 }

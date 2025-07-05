@@ -33,5 +33,5 @@ You can then execute your native executable with: `./target/quarkus-coffesshop-i
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
 
 ```javascript
-{"commandType":"RESTOCK_INVENTORY_COMMAND","item":"COFFEE_BLACK","quantity":0}
+{"commandType":"RESTOCK_INVENTORY_COMMAND","item":"QDC_A101","quantity":0}
 ```

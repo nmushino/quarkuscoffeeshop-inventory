@@ -43,12 +43,12 @@ public class TestKafkaService {
     @Test
     public void testIncoming() {
 
-        RestockItemCommand restockInventoryCommand = new RestockItemCommand(Item.COFFEE_BLACK);
+        RestockItemCommand restockInventoryCommand = new RestockItemCommand(Item.QDC_A101);
         InMemorySource<RestockItemCommand> ordersIn = connector.source(KAKFA_TOPIC);
         ordersIn.send(restockInventoryCommand);
         LOGGER.info("sent to Kafka: {}", restockInventoryCommand);
         await().atLeast(2, TimeUnit.SECONDS).then();
         LOGGER.info("verifying");
-        verify(inventoryService, times(1)).restockItem(new RestockItemCommand(Item.COFFEE_BLACK));
+        verify(inventoryService, times(1)).restockItem(new RestockItemCommand(Item.QDC_A101));
     }
 }

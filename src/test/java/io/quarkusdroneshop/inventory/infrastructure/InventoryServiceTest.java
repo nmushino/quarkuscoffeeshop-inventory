@@ -38,7 +38,7 @@ public class InventoryServiceTest {
     public void setUp() {
 
         results = connector.sink("inventory-out");
-        ProductMaster productMaster = new ProductMaster(UUID.randomUUID(), Item.COFFEE_BLACK);
+        ProductMaster productMaster = new ProductMaster(UUID.randomUUID(), Item.QDC_A101);
         Inventory inventory = new Inventory(productMaster,
                 1.99,
                 3.49,
@@ -57,7 +57,7 @@ public class InventoryServiceTest {
     @Test
     public void testRestockItem() {
 
-        RestockItemCommand restockItemCommand = new RestockItemCommand(Item.COFFEE_BLACK);
+        RestockItemCommand restockItemCommand = new RestockItemCommand(Item.QDC_A101);
         inventoryService.restockItem(restockItemCommand);
         await().atLeast(2, TimeUnit.SECONDS);
         assertEquals(1, results.received().size());
