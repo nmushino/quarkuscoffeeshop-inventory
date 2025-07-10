@@ -5,7 +5,7 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.StringJoiner;
 
 @RegisterForReflection
-public class RestockItemCommand implements CoffeeshopCommand{
+public class RestockItemCommand implements DroneshopCommand{
 
     Item item;
 

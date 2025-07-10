@@ -56,27 +56,22 @@ public class Inventory extends PanacheEntity {
             case QDC_A101:
                 delay = 50;
                 break;
-            case COFFEE_WITH_ROOM:
+            case QDC_A102:
                 delay = 50;
                 break;
-            case ESPRESSO:
+            case QDC_A103:
                 delay = 70;
                 break;
-            case ESPRESSO_DOUBLE:
+            case QDC_A104_AC:
                 delay = 70;
                 break;
-            case CAPPUCCINO:
+            case QDC_A104_AT:
                 delay = 100;
                 break;
             default:
                 delay = 300;
                 break;
         };
-//        try {
-//            Thread.sleep(delay * 1000);
-//        } catch (InterruptedException e) {
-//            Thread.currentThread().interrupt();
-//        }
 
         restockEventList.add(RestockCompletedEvent.from(this));
 

@@ -3,7 +3,7 @@ package io.quarkusdroneshop.inventory.domain;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
 @RegisterForReflection
-public class RestockInventoryCommand implements CoffeeshopCommand{
+public class RestockInventoryCommand implements DroneshopCommand{
 
     Item item;
 
