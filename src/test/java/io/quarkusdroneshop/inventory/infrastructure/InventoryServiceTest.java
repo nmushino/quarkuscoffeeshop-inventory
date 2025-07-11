@@ -45,7 +45,7 @@ public class InventoryServiceTest {
                 1,
                 99,
                 0,
-                LocalDate.of(2021, 10, 21),
+                LocalDate.of(2025, 5, 10),
                 LocalDate.now(),
                 99,
                 1000,
